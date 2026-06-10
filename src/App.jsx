@@ -395,7 +395,6 @@ const galleryItems = [
   { icon: "🎯", label: "Bowling in Action", color: "#1a3a3a" },
   { icon: "🥇", label: "Prize Distribution", color: "#2a1a1a" },
   { icon: "📸", label: "Crowd Energy", color: "#1a2a3a" },
-  { icon: "🌟", label: "Best Batsman Award", color: "#2a2a1a" },
 ];
 
 const faqs = [
@@ -405,15 +404,15 @@ const faqs = [
   },
   {
     q: "What is the entry fee per team?",
-    a: "The entry fee is ₹5,000 per team. This covers all match expenses, tournament kits, and prize pool contributions. Payment via UPI/bank transfer. No refunds after confirmation.",
+    a: "The entry fee is ₹1,000 per team. This covers all match expenses, tournament kits, and prize pool contributions. Payment via UPI/bank transfer. No refunds after confirmation.",
   },
   {
     q: "What is the refund policy?",
-    a: "Teams who withdraw within 7 days of registration receive a 50% refund. No refund is provided within 7 days of the tournament start date. In case of event cancellation by organizers, full refund is issued.",
+    a: "No refund is provided. In case of event cancellation by organizers, full refund is issued.",
   },
   {
     q: "What are the match rules?",
-    a: "Each match is 8 overs per side with a minimum squad of 8 players (max 12). Standard box cricket rules apply: 2 bouncers per over, no LBW, boundary walls count as 4. Finals are 10 overs. Full rules sheet shared post-registration.",
+    a: "Each match is 6 overs per side with a squad of 8 players. Standard box cricket rules apply: no LBW, Finals are 8 overs. Full rules sheet shared post-registration.",
   },
   {
     q: "How to contact the organizers?",
@@ -602,7 +601,7 @@ export default function App() {
               {[
                 ["📅", "Date", "September 14–21, 2026"],
                 ["📍", "Venue", "Rakshak Arena, Surat"],
-                ["💰", "Entry Fee", "₹1,000 per team"],
+                ["💰", "Entry Fee", " ₹1,000 per team"],
                 ["🎯", "Overs", "8 overs per side(final)"],
                 ["👥", "Team Size", "8 players"],
                 ["⚡", "Format", "League + Finals"],
