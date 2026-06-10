@@ -444,7 +444,7 @@ export default function App() {
   const totalSlots = 32;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const countdown = useCountdown("2026-08-15T23:59:59");
+  const countdown = useCountdown("2026-06-25T15:59:59");
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
