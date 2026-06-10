@@ -422,14 +422,13 @@ const faqs = [
 ];
 
 const rules = [
-  ["Team Size", "Minimum 8, Maximum 12 players per squad"],
-  ["Overs", "8 overs per innings (Finals: 10 overs)"],
-  ["Powerplay", "First 2 overs: maximum 2 fielders outside inner circle"],
-  ["No Ball", "Full toss above waist = no ball + free hit"],
-  ["Boundaries", "Wall hit = 4 runs | Over wall = 6 runs"],
-  ["Bowling", "Max 2 overs per bowler in 8-over match"],
+  ["Team Size", "Maximum 8 players per squad"],
+  ["Overs", "league matches-6 overs per innings//final-8 over per innings"],
+  ["No Ball", "No ball as per cricheroes rule...run is given"],
+  ["Boundaries", "wall hit and then wall = 4 runs | direct wall = 6 runs"],
+  ["Bowling", "1 bowler can bowl 2 overs in 6 over match and 2 bowler can bowl 2 overs in 8 over match"],
   ["Disputes", "Umpire decision is final and binding"],
-  ["Dress Code", "Uniform jersey required. Spikes not allowed"],
+  ["Dress Code", "Can wear any of the fav jersey"],
 ];
 
 // ─── MAIN COMPONENT ─────────────────────────────────────────────
@@ -603,12 +602,11 @@ export default function App() {
               {[
                 ["📅", "Date", "September 14–21, 2026"],
                 ["📍", "Venue", "Rakshak Arena, Surat"],
-                ["💰", "Entry Fee", "₹5,000 per team"],
-                ["🏆", "Prize Pool", "₹2,00,000+"],
-                ["🎯", "Overs", "8 overs per side"],
-                ["👥", "Team Size", "8–12 players"],
-                ["⚡", "Format", "Knockout + Finals"],
-                ["🕙", "Match Time", "Morning & Evening slots"],
+                ["💰", "Entry Fee", "₹1,000 per team"],
+                ["🎯", "Overs", "8 overs per side(final)"],
+                ["👥", "Team Size", "8 players"],
+                ["⚡", "Format", "League + Finals"],
+                ["🕙", "Match Time", "Evening slots"],
               ].map(([icon, lbl, val]) => (
                 <div className="glass-card detail-item" key={lbl}>
                   <div className="detail-icon">{icon}</div>
@@ -655,16 +653,13 @@ export default function App() {
             <p className="section-label">Awards & Rewards</p>
             <h2 className="section-title">Prize <span>Pool</span></h2>
             <div className="divider" style={{ margin: "1rem auto 2rem" }} />
-            <p className="section-sub" style={{ margin: "0 auto 3rem" }}>Total prize pool exceeding ₹2,00,000 across all categories</p>
+            <p className="section-sub" style={{ margin: "0 auto 3rem" }}>prize pool of Rs.1500</p>
           </AnimSection>
           <AnimSection style={{ transitionDelay: "0.15s" }}>
             <div className="prizes-grid">
               {[
-                { icon: "🥇", name: "Winner", amount: "₹75,000", sub: "+ Trophy + Medal" },
-                { icon: "🥈", name: "Runner-Up", amount: "₹35,000", sub: "+ Trophy + Medal" },
-                { icon: "🏏", name: "Best Batsman", amount: "₹10,000", sub: "+ Award Certificate" },
-                { icon: "🎯", name: "Best Bowler", amount: "₹10,000", sub: "+ Award Certificate" },
-                { icon: "⭐", name: "Player of Tournament", amount: "₹15,000", sub: "+ Special Trophy" },
+                { icon: "🥇", name: "Winner", amount: "₹1500", sub: "+ Medal" },
+                { icon: "🥈", name: "Runner-Up", sub: " + Medal" },
               ].map(p => (
                 <div className="prize-card" key={p.name}>
                   <div className="prize-icon">{p.icon}</div>
