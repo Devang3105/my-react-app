@@ -633,9 +633,7 @@ export default function App() {
             <p className="section-label">Join the Tournament</p>
             <h2 className="section-title">Register <span>Your Team</span></h2>
             <div className="divider" />
-            <p className="section-sub" style={{ marginBottom: "2rem" }}>
-              Fill all details carefully. Registration confirmed only after payment verification.
-            </p>
+            
           </AnimSection>
 
           <AnimSection style={{ transitionDelay: "0.1s" }}>
