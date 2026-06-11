@@ -347,7 +347,7 @@ const styles = `
   .footer-links li { margin-bottom: 0.5rem; }
   .footer-links a { color: #8892a4; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
   .footer-links a:hover { color: #d4a017; }
-  .footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; }
+  .footer-bottom { max-width: 1200px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
   .footer-copy { color: #8892a4; font-size: 0.82rem; }
 
   /* Rules table */
@@ -416,65 +416,27 @@ const faqs = [
   },
   {
     q: "How to contact the organizers?",
-    a: "Call or WhatsApp: +91 98765 43210. Email: tournament@rakshakgroup.com. WhatsApp group link shared after successful registration. Organizers available 9 AM – 9 PM daily.",
+    a: "Call or WhatsApp: +91 6355 058 026. Email: mishranaitik213@gmail.com. WhatsApp group link shared after successful registration. Organizers available 9 AM – 9 PM daily.",
   },
 ];
 
 const rules = [
   ["Team Size", "Maximum 8 players per squad"],
-  ["Overs", "league matches-6 overs per innings//final-8 over per innings"],
-  ["No Ball", "No ball as per cricheroes rule...run is given"],
-  ["Boundaries", "wall hit and then wall = 4 runs | direct wall = 6 runs"],
-  ["Bowling", "1 bowler can bowl 2 overs in 6 over match and 2 bowler can bowl 2 overs in 8 over match"],
+  ["Overs", "League matches — 6 overs per innings | Final — 8 overs per innings"],
+  ["No Ball", "No ball as per CricHeroes rule... run is given"],
+  ["Boundaries", "Wall hit and then wall = 4 runs | Direct wall = 6 runs"],
+  ["Bowling", "1 bowler can bowl 2 overs in 6-over match; 2 bowlers can bowl 2 overs each in 8-over match"],
   ["Disputes", "Umpire decision is final and binding"],
-  ["Dress Code", "Can wear any of the fav jersey"],
+  ["Dress Code", "Can wear any favourite jersey"],
 ];
 
 // ─── MAIN COMPONENT ─────────────────────────────────────────────
 export default function App() {
-  const [formData, setFormData] = useState({
-    teamName: "", captainName: "", mobile: "", whatsapp: "",
-    email: "", city: "", playerCount: "8", players: "", teamLogo: null, paymentSS: null,
-  });
-  const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
-  const [activeTab, setActiveTab] = useState("details");
   const [faqOpen, setFaqOpen] = useState(null);
-  const [registeredTeams] = useState(23);
-  const totalSlots = 32;
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const countdown = useCountdown("2026-06-25T15:59:59");
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const validate = () => {
-    const e = {};
-    if (!formData.teamName.trim()) e.teamName = "Team name is required";
-    if (!formData.captainName.trim()) e.captainName = "Captain name is required";
-    if (!/^\d{10}$/.test(formData.mobile.replace(/\s/g, ""))) e.mobile = "Enter valid 10-digit mobile";
-    if (!/^\d{10}$/.test(formData.whatsapp.replace(/\s/g, ""))) e.whatsapp = "Enter valid 10-digit WhatsApp number";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) e.email = "Enter valid email address";
-    if (!formData.city.trim()) e.city = "City is required";
-    if (!formData.players.trim()) e.players = "Player list is required";
-    setErrors(e);
-    return Object.keys(e).length === 0;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validate()) setSubmitted(true);
-  };
-
-  const handleChange = (field) => (ev) => {
-    setFormData(p => ({ ...p, [field]: ev.target.value }));
-    if (errors[field]) setErrors(p => ({ ...p, [field]: "" }));
-  };
-
-  const handleFile = (field) => (ev) => {
-    setFormData(p => ({ ...p, [field]: ev.target.files[0] }));
   };
 
   return (
@@ -496,18 +458,13 @@ export default function App() {
       <section className="hero" id="home">
         {/* Stadium backdrop SVG */}
         <svg className="hero-stadium" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
-          {/* Ground */}
           <ellipse cx="600" cy="380" rx="550" ry="100" fill="rgba(20,80,30,0.4)" />
           <ellipse cx="600" cy="370" rx="400" ry="70" fill="rgba(30,100,40,0.3)" />
-          {/* Pitch */}
           <rect x="565" y="250" width="70" height="160" rx="4" fill="rgba(180,160,100,0.3)" />
-          {/* Stands left */}
           <path d="M0,300 Q50,150 120,100 L120,400 L0,400 Z" fill="rgba(20,30,60,0.6)" />
           <path d="M20,300 Q70,160 130,110" stroke="rgba(255,255,255,0.08)" strokeWidth="1" fill="none"/>
           <path d="M40,310 Q80,170 135,120" stroke="rgba(255,255,255,0.06)" strokeWidth="1" fill="none"/>
-          {/* Stands right */}
           <path d="M1200,300 Q1150,150 1080,100 L1080,400 L1200,400 Z" fill="rgba(20,30,60,0.6)" />
-          {/* Floodlight towers */}
           <line x1="80" y1="0" x2="90" y2="220" stroke="rgba(255,255,255,0.3)" strokeWidth="3"/>
           <rect x="60" y="0" width="60" height="20" rx="4" fill="rgba(255,220,60,0.5)"/>
           <line x1="1120" y1="0" x2="1110" y2="220" stroke="rgba(255,255,255,0.3)" strokeWidth="3"/>
@@ -516,26 +473,23 @@ export default function App() {
           <rect x="305" y="10" width="50" height="16" rx="3" fill="rgba(255,220,60,0.4)"/>
           <line x1="880" y1="20" x2="870" y2="200" stroke="rgba(255,255,255,0.2)" strokeWidth="2"/>
           <rect x="845" y="10" width="50" height="16" rx="3" fill="rgba(255,220,60,0.4)"/>
-          {/* Crowd dots */}
           {Array.from({length: 60}, (_, i) => (
             <circle key={i} cx={20 + (i % 15) * 8} cy={110 + Math.floor(i/15)*20 + (i%3)*5} r="3" fill="rgba(255,255,255,0.15)" />
           ))}
           {Array.from({length: 60}, (_, i) => (
             <circle key={`r${i}`} cx={1080 + (i % 15) * 8} cy={110 + Math.floor(i/15)*20 + (i%3)*5} r="3" fill="rgba(255,255,255,0.15)" />
           ))}
-          {/* Batsman silhouette */}
           <ellipse cx="540" cy="335" rx="10" ry="14" fill="rgba(255,255,255,0.2)"/>
           <line x1="540" y1="349" x2="535" y2="380" stroke="rgba(255,255,255,0.2)" strokeWidth="3"/>
           <line x1="540" y1="349" x2="545" y2="380" stroke="rgba(255,255,255,0.2)" strokeWidth="3"/>
           <line x1="540" y1="360" x2="520" y2="375" stroke="rgba(255,255,255,0.25)" strokeWidth="3"/>
-          {/* Wickets */}
           <line x1="595" y1="300" x2="595" y2="370" stroke="rgba(255,255,255,0.3)" strokeWidth="2"/>
           <line x1="605" y1="300" x2="605" y2="370" stroke="rgba(255,255,255,0.3)" strokeWidth="2"/>
           <line x1="615" y1="300" x2="615" y2="370" stroke="rgba(255,255,255,0.3)" strokeWidth="2"/>
           <line x1="590" y1="300" x2="620" y2="300" stroke="rgba(255,255,255,0.3)" strokeWidth="3"/>
         </svg>
 
-        {/* Floodlight rays (CSS) */}
+        {/* Floodlight rays */}
         <div style={{ position: "absolute", top: 0, left: "8%", width: 2, height: "60%", background: "linear-gradient(to bottom, rgba(240,190,58,0.25), transparent)", transform: "rotate(15deg)", transformOrigin: "top" }} />
         <div style={{ position: "absolute", top: 0, left: "10%", width: 1, height: "55%", background: "linear-gradient(to bottom, rgba(240,190,58,0.15), transparent)", transform: "rotate(25deg)", transformOrigin: "top" }} />
         <div style={{ position: "absolute", top: 0, right: "8%", width: 2, height: "60%", background: "linear-gradient(to bottom, rgba(240,190,58,0.25), transparent)", transform: "rotate(-15deg)", transformOrigin: "top" }} />
@@ -545,28 +499,20 @@ export default function App() {
           <span>🏏</span>
           <span>Official Tournament 2026</span>
         </div>
-        {/* Rakshak Group Logo */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            margin: "1.5rem 0",
-          }}
-        >
+
+        {/* Logo */}
+        <div style={{ display: "flex", justifyContent: "center", margin: "1.5rem 0" }}>
           <img
             src="/rakshak-logo.png"
             alt="Rakshak Group Logo"
             style={{
-              width: "130px",
-              height: "130px",
-              objectFit: "contain",
-              borderRadius: "50%",
-              background: "rgba(255,255,255,0.05)",
-              padding: "8px",
-              boxShadow: "0 8px 25px rgba(212,160,23,0.25)",
+              width: "130px", height: "130px", objectFit: "contain",
+              borderRadius: "50%", background: "rgba(255,255,255,0.05)",
+              padding: "8px", boxShadow: "0 8px 25px rgba(212,160,23,0.25)",
             }}
           />
         </div>
+
         <h1 className="hero-title">
           Rakshak Group<br />
           <span>Box Cricket</span><br />
@@ -575,7 +521,6 @@ export default function App() {
 
         <p className="hero-tagline">Battle for Glory. Play with Passion.</p>
 
-        {/* Countdown */}
         <div>
           <p style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.75rem", letterSpacing: "0.15em", color: C.slate, textTransform: "uppercase", marginBottom: "0.75rem" }}>
             Registration closes in
@@ -594,7 +539,6 @@ export default function App() {
           <button className="btn-primary" onClick={() => scrollTo("register")}>Register Your Team Now</button>
           <button className="btn-outline" onClick={() => scrollTo("details")}>View Details</button>
         </div>
-
       </section>
 
       {/* ── TOURNAMENT DETAILS ── */}
@@ -611,8 +555,8 @@ export default function App() {
               {[
                 ["📅", "Date", "September 14–21, 2026"],
                 ["📍", "Venue", "Rakshak Arena, Surat"],
-                ["💰", "Entry Fee", " ₹1,000 per team"],
-                ["🎯", "Overs", "8 overs per side(final)"],
+                ["💰", "Entry Fee", "₹1,000 per team"],
+                ["🎯", "Overs", "8 overs per side (final)"],
                 ["👥", "Team Size", "8 players"],
                 ["⚡", "Format", "League + Finals"],
                 ["🕙", "Match Time", "Evening slots"],
@@ -662,18 +606,18 @@ export default function App() {
             <p className="section-label">Awards & Rewards</p>
             <h2 className="section-title">Prize <span>Pool</span></h2>
             <div className="divider" style={{ margin: "1rem auto 2rem" }} />
-            <p className="section-sub" style={{ margin: "0 auto 3rem" }}>prize pool of Rs.1500</p>
+            <p className="section-sub" style={{ margin: "0 auto 3rem" }}>Prize pool of ₹1,500</p>
           </AnimSection>
           <AnimSection style={{ transitionDelay: "0.15s" }}>
             <div className="prizes-grid">
               {[
                 { icon: "🥇", name: "Winner", amount: "₹1500", sub: "+ Medal" },
-                { icon: "🥈", name: "Runner-Up", sub: " + Medal" },
+                { icon: "🥈", name: "Runner-Up", amount: "", sub: "+ Medal" },
               ].map(p => (
                 <div className="prize-card" key={p.name}>
                   <div className="prize-icon">{p.icon}</div>
                   <div className="prize-name">{p.name}</div>
-                  <div className="prize-amount">{p.amount}</div>
+                  {p.amount && <div className="prize-amount">{p.amount}</div>}
                   <div style={{ fontSize: "0.8rem", color: C.slate, marginTop: 6 }}>{p.sub}</div>
                 </div>
               ))}
@@ -682,7 +626,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* ── REGISTRATION FORM ── */}
+      {/* ── REGISTRATION ── */}
       <div className="section-full section-bg" id="register">
         <div className="section">
           <AnimSection>
@@ -694,35 +638,28 @@ export default function App() {
             </p>
           </AnimSection>
 
-         <AnimSection style={{ transitionDelay: "0.1s" }}>
-  <div className="glass-card" style={{ padding: "3rem", textAlign: "center" }}>
-    <div style={{ fontSize: "4rem" }}>🏏</div>
-    <h3 style={{ color: C.gold, marginTop: "1rem" }}>
-      Team Registration
-    </h3>
-    <p style={{ color: C.whiteDim, margin: "1rem 0 2rem" }}>
-      Click the button below to register your team through our official Google Form.
-    </p>
-
-    <a
-      href="https://forms.gle/9wLcLnSE8krxYcrW6"
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{ textDecoration: "none" }}
-    >
-      <button
-        className="btn-primary"
-        style={{
-          padding: "1rem 2.5rem",
-          fontSize: "1.1rem",
-          borderRadius: "50px",
-        }}
-      >
-        📝 Register via Google Form
-      </button>
-    </a>
-  </div>
-</AnimSection>       
+          <AnimSection style={{ transitionDelay: "0.1s" }}>
+            <div className="glass-card" style={{ padding: "3rem", textAlign: "center" }}>
+              <div style={{ fontSize: "4rem" }}>🏏</div>
+              <h3 style={{ color: C.gold, marginTop: "1rem" }}>Team Registration</h3>
+              <p style={{ color: C.whiteDim, margin: "1rem 0 2rem" }}>
+                Click the button below to register your team through our official Google Form.
+              </p>
+              <a
+                href="https://forms.gle/9wLcLnSE8krxYcrW6"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none" }}
+              >
+                <button
+                  className="btn-primary"
+                  style={{ padding: "1rem 2.5rem", fontSize: "1.1rem", borderRadius: "50px" }}
+                >
+                  📝 Register via Google Form
+                </button>
+              </a>
+            </div>
+          </AnimSection>
         </div>
       </div>
 
@@ -766,7 +703,10 @@ export default function App() {
               ))}
             </div>
             <p style={{ marginTop: "2rem", color: C.slate, fontSize: "0.9rem" }}>
-              Interested in sponsoring? <button onClick={() => scrollTo("contact")} style={{ background: "none", border: "none", color: C.gold, cursor: "pointer", fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: "0.9rem" }}>Contact us →</button>
+              Interested in sponsoring?{" "}
+              <button onClick={() => scrollTo("contact")} style={{ background: "none", border: "none", color: C.gold, cursor: "pointer", fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: "0.9rem" }}>
+                Contact us →
+              </button>
             </p>
           </AnimSection>
         </div>
@@ -805,10 +745,14 @@ export default function App() {
 
           <AnimSection style={{ transitionDelay: "0.1s" }}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "2rem" }}>
+
+              {/* Contact info card */}
               <div className="glass-card contact-card">
-                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: "1.3rem", color: C.gold, marginBottom: "1rem", textTransform: "uppercase" }}>Rakshak Group</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: "1.3rem", color: C.gold, marginBottom: "1rem", textTransform: "uppercase" }}>
+                  Rakshak Group
+                </div>
                 {[
-                  ["📞", <><strong>Phone:</strong> +91 6355 058 026  +91 98700 05499</>],
+                  ["📞", <><strong>Phone:</strong> +91 6355 058 026 &nbsp;|&nbsp; +91 98700 05499</>],
                   ["💬", <><strong>WhatsApp:</strong> +91 98700 05499</>],
                   ["📧", <><strong>Email:</strong> mishranaitik213@gmail.com</>],
                   ["📍", <><strong>Address:</strong> Dindoli, Surat, Gujarat 394210</>],
@@ -834,56 +778,27 @@ export default function App() {
                 </div>
               </div>
 
-             {/* Why Participate */}
-<div
-  className="glass-card"
-  style={{
-    padding: "2rem",
-    minHeight: 280,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-  }}
->
-  <div
-    style={{
-      fontFamily: "'Rajdhani', sans-serif",
-      fontSize: "1.8rem",
-      fontWeight: 700,
-      color: C.gold,
-      marginBottom: "1.5rem",
-      textAlign: "center",
-    }}
-  >
-    🏆 Why Participate?
-  </div>
+              {/* Why Participate card */}
+              <div className="glass-card" style={{ padding: "2rem", minHeight: 280, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                <div style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "1.8rem", fontWeight: 700, color: C.gold, marginBottom: "1.5rem", textAlign: "center" }}>
+                  🏆 Why Participate?
+                </div>
+                <div style={{ color: C.white, fontSize: "1rem", lineHeight: "2.2" }}>
+                  <div>⭐ Exciting Cash Prizes</div>
+                  <div>⭐ Professional Match Management</div>
+                  <div>⭐ Fair Play & Certified Umpires</div>
+                  <div>⭐ Live Photography & Social Media Coverage</div>
+                  <div>⭐ Fun, Competition & Team Spirit</div>
+                </div>
+                <div style={{ marginTop: "1.8rem", textAlign: "center", color: C.slate, fontSize: "0.9rem", fontStyle: "italic" }}>
+                  "Play with passion, compete with pride, and create unforgettable memories!"
+                </div>
+              </div>
 
-  <div
-    style={{
-      color: C.white,
-      fontSize: "1rem",
-      lineHeight: "2.2",
-    }}
-  >
-    <div>⭐ Exciting Cash Prizes</div>
-    <div>⭐ Professional Match Management</div>
-    <div>⭐ Fair Play & Certified Umpires</div>
-    <div>⭐ Live Photography & Social Media Coverage</div>
-    <div>⭐ Fun, Competition & Team Spirit</div>
-  </div>
-
-  <div
-    style={{
-      marginTop: "1.8rem",
-      textAlign: "center",
-      color: C.slate,
-      fontSize: "0.9rem",
-      fontStyle: "italic",
-    }}
-  >
-    "Play with passion, compete with pride, and create unforgettable memories!"
-  </div>
-</div>
+            </div>
+          </AnimSection>
+        </div>
+      </div>
 
       {/* ── FOOTER ── */}
       <footer>
@@ -911,9 +826,9 @@ export default function App() {
           <div>
             <div className="footer-title">Contact</div>
             <ul className="footer-links">
-              <li><a href="tel:+919876543210">+91 98700 05499</a></li>
-              <li><a href="mailto:tournament@rakshakgroup.com">mishranaitik213@gmail.com</a></li>
-              <li><a href="#"> Dindoli, Surat, Gujarat</a></li>
+              <li><a href="tel:+919870005499">+91 98700 05499</a></li>
+              <li><a href="mailto:mishranaitik213@gmail.com">mishranaitik213@gmail.com</a></li>
+              <li><a href="#">Dindoli, Surat, Gujarat</a></li>
             </ul>
           </div>
         </div>
