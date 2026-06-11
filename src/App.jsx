@@ -554,7 +554,7 @@ export default function App() {
             <div className="details-grid">
               {[
                 ["📅", "Date", "September 14–21, 2026"],
-                ["📍", "Venue", "Rakshak Arena, Surat"],
+                ["📍", "Venue", "Dindoli, Surat"],
                 ["💰", "Entry Fee", "₹1,000 per team"],
                 ["🎯", "Overs", "8 overs per side (final)"],
                 ["👥", "Team Size", "8 players"],
@@ -696,7 +696,7 @@ export default function App() {
           </AnimSection>
           <AnimSection style={{ transitionDelay: "0.1s" }}>
             <div className="sponsor-row">
-              {["Title Sponsor: Rakshak Group", "Kit Partner: SportZone", "Ground: Surat Arena", "Media: CricketHub", "Food: TastyCorner", "Digital: TechPlay"].map(s => (
+              {["Title Sponsor: Rakshak Group", "Kit Partner: Rakshak", "Ground: Dindoli turf"].map(s => (
                 <div className="sponsor-logo" key={s}>{s}</div>
               ))}
             </div>
