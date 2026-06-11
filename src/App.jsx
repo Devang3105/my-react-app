@@ -595,7 +595,7 @@ export default function App() {
           <button className="btn-outline" onClick={() => scrollTo("details")}>View Details</button>
         </div>
 
-        
+      </section>
 
       {/* ── TOURNAMENT DETAILS ── */}
       <div className="section-full section-bg" id="details">
