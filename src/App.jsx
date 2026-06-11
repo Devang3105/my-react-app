@@ -545,7 +545,28 @@ export default function App() {
           <span>🏏</span>
           <span>Official Tournament 2026</span>
         </div>
-
+        {/* Rakshak Group Logo */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            margin: "1.5rem 0",
+          }}
+        >
+          <img
+            src="/rakshak-logo.png"
+            alt="Rakshak Group Logo"
+            style={{
+              width: "130px",
+              height: "130px",
+              objectFit: "contain",
+              borderRadius: "50%",
+              background: "rgba(255,255,255,0.05)",
+              padding: "8px",
+              boxShadow: "0 8px 25px rgba(212,160,23,0.25)",
+            }}
+          />
+        </div>
         <h1 className="hero-title">
           Rakshak Group<br />
           <span>Box Cricket</span><br />
@@ -574,18 +595,7 @@ export default function App() {
           <button className="btn-outline" onClick={() => scrollTo("details")}>View Details</button>
         </div>
 
-        {/* Slots live counter */}
-        <div style={{ marginTop: "3rem", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(212,160,23,0.2)", borderRadius: 10, padding: "1rem 2rem", position: "relative", zIndex: 1 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-            <span style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.8rem", color: C.slate, letterSpacing: "0.1em", textTransform: "uppercase" }}>Teams Registered</span>
-            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, color: C.gold }}>{registeredTeams} / {totalSlots}</span>
-          </div>
-          <div className="slots-bar-bg" style={{ width: 280 }}>
-            <div className="slots-bar-fill" style={{ width: `${(registeredTeams / totalSlots) * 100}%` }} />
-          </div>
-          <p style={{ fontSize: "0.8rem", color: "#e24b4a", fontFamily: "'Rajdhani', sans-serif", fontWeight: 600 }}>🔴 Only {totalSlots - registeredTeams} slots remaining!</p>
-        </div>
-      </section>
+        
 
       {/* ── TOURNAMENT DETAILS ── */}
       <div className="section-full section-bg" id="details">
@@ -684,113 +694,35 @@ export default function App() {
             </p>
           </AnimSection>
 
-          {submitted ? (
-            <AnimSection>
-              <div className="glass-card success-overlay">
-                <div className="success-icon">🎉</div>
-                <div className="success-title">Registration Submitted!</div>
-                <p className="success-sub">Your team <strong style={{ color: C.white }}>{formData.teamName}</strong> has been registered.</p>
-                <p className="success-sub" style={{ marginTop: 8 }}>We'll contact <strong style={{ color: C.white }}>{formData.whatsapp}</strong> on WhatsApp within 24 hours for confirmation.</p>
-                <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-                  <button className="btn-primary" onClick={() => { setSubmitted(false); setFormData({ teamName:"",captainName:"",mobile:"",whatsapp:"",email:"",city:"",playerCount:"8",players:"",teamLogo:null,paymentSS:null }); }}>
-                    Register Another Team
-                  </button>
-                  <button className="btn-outline" onClick={() => scrollTo("contact")}>Contact Organizers</button>
-                </div>
-              </div>
-            </AnimSection>
-          ) : (
-            <AnimSection style={{ transitionDelay: "0.1s" }}>
-              <div className="glass-card" style={{ padding: "2rem" }}>
-                {/* QR Payment info */}
-                <div style={{ background: "rgba(212,160,23,0.08)", border: "1px solid rgba(212,160,23,0.3)", borderRadius: 8, padding: "1rem 1.5rem", marginBottom: "2rem", display: "flex", gap: "1rem", alignItems: "flex-start" }}>
-                  <span style={{ fontSize: "1.5rem" }}>📲</span>
-                  <div>
-                    <div style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, color: C.gold, marginBottom: 4 }}>Payment via UPI</div>
-                    <div style={{ color: C.whiteDim, fontSize: "0.9rem" }}>UPI ID: rakshakgroup@paytm | Scan QR at venue or pay online and upload screenshot below.</div>
-                  </div>
-                </div>
+         <AnimSection style={{ transitionDelay: "0.1s" }}>
+  <div className="glass-card" style={{ padding: "3rem", textAlign: "center" }}>
+    <div style={{ fontSize: "4rem" }}>🏏</div>
+    <h3 style={{ color: C.gold, marginTop: "1rem" }}>
+      Team Registration
+    </h3>
+    <p style={{ color: C.whiteDim, margin: "1rem 0 2rem" }}>
+      Click the button below to register your team through our official Google Form.
+    </p>
 
-                <form onSubmit={handleSubmit} noValidate>
-                  <div className="form-grid">
-                    {/* Team Name */}
-                    <div className="form-group">
-                      <label className="form-label">Team Name *</label>
-                      <input className={`form-input${errors.teamName ? " error" : ""}`} placeholder="e.g. Royal Strikers" value={formData.teamName} onChange={handleChange("teamName")} />
-                      {errors.teamName && <span className="form-error">{errors.teamName}</span>}
-                    </div>
-                    {/* Captain */}
-                    <div className="form-group">
-                      <label className="form-label">Captain Name *</label>
-                      <input className={`form-input${errors.captainName ? " error" : ""}`} placeholder="Full name" value={formData.captainName} onChange={handleChange("captainName")} />
-                      {errors.captainName && <span className="form-error">{errors.captainName}</span>}
-                    </div>
-                    {/* Mobile */}
-                    <div className="form-group">
-                      <label className="form-label">Mobile Number *</label>
-                      <input className={`form-input${errors.mobile ? " error" : ""}`} placeholder="10-digit number" value={formData.mobile} onChange={handleChange("mobile")} maxLength={10} />
-                      {errors.mobile && <span className="form-error">{errors.mobile}</span>}
-                    </div>
-                    {/* WhatsApp */}
-                    <div className="form-group">
-                      <label className="form-label">WhatsApp Number *</label>
-                      <input className={`form-input${errors.whatsapp ? " error" : ""}`} placeholder="10-digit number" value={formData.whatsapp} onChange={handleChange("whatsapp")} maxLength={10} />
-                      {errors.whatsapp && <span className="form-error">{errors.whatsapp}</span>}
-                    </div>
-                    {/* Email */}
-                    <div className="form-group">
-                      <label className="form-label">Email Address *</label>
-                      <input className={`form-input${errors.email ? " error" : ""}`} type="email" placeholder="captain@email.com" value={formData.email} onChange={handleChange("email")} />
-                      {errors.email && <span className="form-error">{errors.email}</span>}
-                    </div>
-                    {/* City */}
-                    <div className="form-group">
-                      <label className="form-label">City *</label>
-                      <input className={`form-input${errors.city ? " error" : ""}`} placeholder="Your city" value={formData.city} onChange={handleChange("city")} />
-                      {errors.city && <span className="form-error">{errors.city}</span>}
-                    </div>
-                    {/* Player count */}
-                    <div className="form-group">
-                      <label className="form-label">Number of Players *</label>
-                      <select className="form-input" value={formData.playerCount} onChange={handleChange("playerCount")}>
-                        {["8","9","10","11","12"].map(n => <option key={n} value={n}>{n} Players</option>)}
-                      </select>
-                    </div>
-                    {/* Team logo */}
-                    <div className="form-group">
-                      <label className="form-label">Team Logo (Optional)</label>
-                      <input className="form-input" type="file" accept="image/*" onChange={handleFile("teamLogo")} style={{ padding: "0.5rem 1rem" }} />
-                    </div>
-                  </div>
-
-                  {/* Player list — full width */}
-                  <div className="form-group" style={{ marginTop: "1.2rem" }}>
-                    <label className="form-label">Player List * (one name per line)</label>
-                    <textarea
-                      className={`form-input${errors.players ? " error" : ""}`}
-                      placeholder={"1. Rohit Sharma\n2. Virat Kohli\n3. ..."}
-                      rows={6}
-                      value={formData.players}
-                      onChange={handleChange("players")}
-                      style={{ resize: "vertical" }}
-                    />
-                    {errors.players && <span className="form-error">{errors.players}</span>}
-                  </div>
-
-                  {/* Payment SS */}
-                  <div className="form-group" style={{ marginTop: "1.2rem" }}>
-                    <label className="form-label">Payment Screenshot *</label>
-                    <input className="form-input" type="file" accept="image/*" onChange={handleFile("paymentSS")} style={{ padding: "0.5rem 1rem" }} />
-                    <span style={{ fontSize: "0.78rem", color: C.slate }}>Upload screenshot of ₹5,000 payment transfer</span>
-                  </div>
-
-                  <button type="submit" className="btn-primary" style={{ marginTop: "2rem", width: "100%", fontSize: "1.1rem", padding: "1rem" }}>
-                    Submit Registration 🏏
-                  </button>
-                </form>
-              </div>
-            </AnimSection>
-          )}
+    <a
+      href="https://forms.gle/9wLcLnSE8krxYcrW6"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ textDecoration: "none" }}
+    >
+      <button
+        className="btn-primary"
+        style={{
+          padding: "1rem 2.5rem",
+          fontSize: "1.1rem",
+          borderRadius: "50px",
+        }}
+      >
+        📝 Register via Google Form
+      </button>
+    </a>
+  </div>
+</AnimSection>       
         </div>
       </div>
 
@@ -876,11 +808,10 @@ export default function App() {
               <div className="glass-card contact-card">
                 <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: "1.3rem", color: C.gold, marginBottom: "1rem", textTransform: "uppercase" }}>Rakshak Group</div>
                 {[
-                  ["📞", <><strong>Phone:</strong> +91 98765 43210</>],
-                  ["💬", <><strong>WhatsApp:</strong> +91 98765 43210</>],
-                  ["📧", <><strong>Email:</strong> tournament@rakshakgroup.com</>],
-                  ["📍", <><strong>Address:</strong> Rakshak Arena, Ring Road, Surat, Gujarat 395002</>],
-                  ["🕙", <><strong>Hours:</strong> Mon–Sat, 9 AM – 9 PM</>],
+                  ["📞", <><strong>Phone:</strong> +91 6355 058 026  +91 98700 05499</>],
+                  ["💬", <><strong>WhatsApp:</strong> +91 98700 05499</>],
+                  ["📧", <><strong>Email:</strong> mishranaitik213@gmail.com</>],
+                  ["📍", <><strong>Address:</strong> Dindoli, Surat, Gujarat 394210</>],
                 ].map(([icon, text], i) => (
                   <div className="contact-row" key={i}>
                     <span className="contact-icon">{icon}</span>
@@ -889,7 +820,7 @@ export default function App() {
                 ))}
 
                 <a
-                  href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20register%20for%20Rakshak%20Group%20Box%20Cricket%20Tournament%202026"
+                  href="https://wa.me/919870005499?text=Hi%2C%20I%20want%20to%20register%20for%20Rakshak%20Group%20Box%20Cricket%20Tournament%202026"
                   target="_blank" rel="noreferrer"
                   style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: "1.5rem", background: "#25d366", color: "#fff", border: "none", borderRadius: 6, padding: "0.75rem 1.5rem", fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: "0.95rem", letterSpacing: "0.06em", cursor: "pointer", textDecoration: "none" }}
                 >
@@ -903,26 +834,56 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Map placeholder */}
-              <div className="glass-card" style={{ overflow: "hidden", minHeight: 280, position: "relative", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 12 }}>
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, #0f1628 0%, #162040 100%)", opacity: 0.8 }} />
-                <div style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
-                  <div style={{ fontSize: "3rem", marginBottom: 12 }}>🗺️</div>
-                  <div style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, color: C.white, fontSize: "1.1rem" }}>Rakshak Arena</div>
-                  <div style={{ color: C.slate, fontSize: "0.9rem", marginTop: 4 }}>Ring Road, Surat, Gujarat 395002</div>
-                  <a
-                    href="https://maps.google.com/?q=Surat+Gujarat"
-                    target="_blank" rel="noreferrer"
-                    style={{ display: "inline-block", marginTop: "1rem", color: C.gold, textDecoration: "none", fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.1em", textTransform: "uppercase", border: "1px solid rgba(212,160,23,0.4)", borderRadius: 4, padding: "0.5rem 1.2rem", transition: "all 0.2s" }}
-                  >
-                    Open in Google Maps →
-                  </a>
-                </div>
-              </div>
-            </div>
-          </AnimSection>
-        </div>
-      </div>
+             {/* Why Participate */}
+<div
+  className="glass-card"
+  style={{
+    padding: "2rem",
+    minHeight: 280,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  }}
+>
+  <div
+    style={{
+      fontFamily: "'Rajdhani', sans-serif",
+      fontSize: "1.8rem",
+      fontWeight: 700,
+      color: C.gold,
+      marginBottom: "1.5rem",
+      textAlign: "center",
+    }}
+  >
+    🏆 Why Participate?
+  </div>
+
+  <div
+    style={{
+      color: C.white,
+      fontSize: "1rem",
+      lineHeight: "2.2",
+    }}
+  >
+    <div>⭐ Exciting Cash Prizes</div>
+    <div>⭐ Professional Match Management</div>
+    <div>⭐ Fair Play & Certified Umpires</div>
+    <div>⭐ Live Photography & Social Media Coverage</div>
+    <div>⭐ Fun, Competition & Team Spirit</div>
+  </div>
+
+  <div
+    style={{
+      marginTop: "1.8rem",
+      textAlign: "center",
+      color: C.slate,
+      fontSize: "0.9rem",
+      fontStyle: "italic",
+    }}
+  >
+    "Play with passion, compete with pride, and create unforgettable memories!"
+  </div>
+</div>
 
       {/* ── FOOTER ── */}
       <footer>
@@ -950,9 +911,9 @@ export default function App() {
           <div>
             <div className="footer-title">Contact</div>
             <ul className="footer-links">
-              <li><a href="tel:+919876543210">+91 98765 43210</a></li>
-              <li><a href="mailto:tournament@rakshakgroup.com">tournament@rakshakgroup.com</a></li>
-              <li><a href="#">Rakshak Arena, Surat, Gujarat</a></li>
+              <li><a href="tel:+919876543210">+91 98700 05499</a></li>
+              <li><a href="mailto:tournament@rakshakgroup.com">mishranaitik213@gmail.com</a></li>
+              <li><a href="#">Dindoli, Surat, Gujarat</a></li>
             </ul>
           </div>
         </div>
