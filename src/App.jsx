@@ -913,7 +913,7 @@ export default function App() {
             <ul className="footer-links">
               <li><a href="tel:+919876543210">+91 98700 05499</a></li>
               <li><a href="mailto:tournament@rakshakgroup.com">mishranaitik213@gmail.com</a></li>
-              <li><a href="#">Dindoli, Surat, Gujarat</a></li>
+              <li><a href="#"> Dindoli, Surat, Gujarat</a></li>
             </ul>
           </div>
         </div>
