@@ -433,7 +433,7 @@ const rules = [
 // ─── MAIN COMPONENT ─────────────────────────────────────────────
 export default function App() {
   const [faqOpen, setFaqOpen] = useState(null);
-  const countdown = useCountdown("2026-06-25T15:59:59");
+  const countdown = useCountdown("2026-06-26T16:00:00");
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
