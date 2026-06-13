@@ -553,7 +553,7 @@ export default function App() {
           <AnimSection style={{ transitionDelay: "0.1s" }}>
             <div className="details-grid">
               {[
-                ["📅", "Date", "September 14–21, 2026"],
+                ["📅", "Date", "June 26, 2026"],
                 ["📍", "Venue", "Dindoli, Surat"],
                 ["💰", "Entry Fee", "₹1,000 per team"],
                 ["🎯", "Overs", "8 overs per side (final)"],
