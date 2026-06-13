@@ -595,6 +595,27 @@ export default function App() {
                 </tbody>
               </table>
             </div>
+            <div style={{ display: "flex", gap: "1rem", marginTop: "1.5rem", flexWrap: "wrap" }}>
+  <a
+    href="/Rulebook_eng.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn-primary"
+    style={{ textDecoration: "none" }}
+  >
+    📖 English Rule book
+  </a>
+
+  <a
+    href="/Rulebook_guj.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn-outline"
+    style={{ textDecoration: "none" }}
+  >
+    📘Gujarati Rule Book
+  </a>
+</div>
           </AnimSection>
         </div>
       </div>
