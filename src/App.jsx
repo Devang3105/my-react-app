@@ -523,7 +523,7 @@ export default function App() {
 
         <div>
           <p style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.75rem", letterSpacing: "0.15em", color: C.slate, textTransform: "uppercase", marginBottom: "0.75rem" }}>
-            Registration closes in
+            TOURNAMENT STARTS IN
           </p>
           <div className="countdown">
             {[["d", "Days"], ["h", "Hours"], ["m", "Minutes"], ["s", "Seconds"]].map(([k, lbl]) => (
